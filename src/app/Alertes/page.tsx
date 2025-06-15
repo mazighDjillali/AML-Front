@@ -129,7 +129,7 @@ export default function Dashboard() {
         </div>
 
         {/* Total Transactions */}
-        <Card className="col-span-4 row-span-1 bg-gradient-to-br from-blue-200 to-white shadow-md border border-yellow-300 rounded-2xl px-4 py-4">
+        <Card className="col-span-4 row-span-1  shadow-md border border-yellow-300 rounded-2xl px-4 py-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <div className="flex flex-col">
@@ -182,7 +182,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Total Anomalies by Scenario */}
-        <Card className="col-span-4 row-span-1 bg-gradient-to-br from-blue-200 to-white shadow-md border border-yellow-300 rounded-2xl px-4 py-4">
+        <Card className="col-span-4 row-span-1  shadow-md border border-yellow-300 rounded-2xl px-4 py-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <div className="flex flex-col">
@@ -234,7 +234,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Total Accounts */}
-        <Card className="col-span-4 bg-gradient-to-br from-blue-200 to-white shadow-md border border-yellow-300 rounded-2xl px-6 py-4">
+        <Card className="col-span-4  shadow-md border border-yellow-300 rounded-2xl px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
               <CardTitle className="text-xl font-medium text-apcolor2">

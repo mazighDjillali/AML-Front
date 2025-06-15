@@ -52,7 +52,7 @@ export const UIStateStore = create<UIStoreInterface>()(
           set({ user });
         },
         logout: () => {
-          console.log("logging out.");
+          //console.log("logging out.");
         },
         resetStore: () => {
           set({ ...initialState });

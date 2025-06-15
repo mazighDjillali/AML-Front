@@ -103,7 +103,6 @@ export default function Dashboard() {
     () => getAnomalyCount(selectedScenario),
     [anomalyData, selectedScenario],
   );
-  console.log("AAAAAAA", currentPage)
   const totalAnomalies = useMemo(() => getTotalAnomalies(), [anomalyData]);
   const scenarioPercent = useMemo(
     () => getAnomalyPercent(scenarioCount, totalAnomalies),
@@ -125,12 +124,12 @@ export default function Dashboard() {
           
       <div className="grid grid-cols-12  gap-4 w-full h-full grid-flow-dense  p-4">
         {/* Map */}
-        <div className="col-span-8 row-span-3 bg-gradient-to-br from-blue-300 to-white shadow-md border border-blue-200 rounded-2xl px-4 py-4">
+        <div className="col-span-8 row-span-3  shadow-md border border-blue-200 rounded-2xl px-4 py-4">
           <AlgeriaMap />
         </div>
 
         {/* Total Transactions */}
-        <Card className="col-span-4 row-span-1 bg-gradient-to-br from-blue-200 to-white shadow-md border border-yellow-300 rounded-2xl px-4 py-4">
+        <Card className="col-span-4 row-span-1  shadow-md border border-yellow-300 rounded-2xl px-4 py-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <div className="flex flex-col">
@@ -183,7 +182,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Total Anomalies by Scenario */}
-        <Card className="col-span-4 row-span-1 bg-gradient-to-br from-blue-200 to-white shadow-md border border-yellow-300 rounded-2xl px-4 py-4">
+        <Card className="col-span-4 row-span-1  shadow-md border border-yellow-300 rounded-2xl px-4 py-4">
           <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between">
               <div className="flex flex-col">
@@ -235,7 +234,7 @@ export default function Dashboard() {
         </Card>
 
         {/* Total Accounts */}
-        <Card className="col-span-4 bg-gradient-to-br from-blue-200 to-white shadow-md border border-yellow-300 rounded-2xl px-6 py-4">
+        <Card className="col-span-4  shadow-md border border-yellow-300 rounded-2xl px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
               <CardTitle className="text-xl font-medium text-apcolor2">

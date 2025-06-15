@@ -31,9 +31,10 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { RiskTable } from "@/components/structuring-table";
+import { ModelResults } from "@/components/model-report";
 // -------------------------------
 
-export default function Dashboard() {
+export default function Structuring() {
     const [selectedScenario, setSelectedScenario] = useState("Smurfing");
     const { clickedFeature } = DashboardStore();
     const [selectedView, setSelectedView] = useState<"Overview" | "Expert" | "Ai insights">("Overview");
@@ -153,7 +154,10 @@ export default function Dashboard() {
                     </div>
                 )}
 
+                {selectedView === "Expert" && (
 
+                    <ModelResults />
+                )}
 
             </SidebarInset>
         </SidebarProvider>

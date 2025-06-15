@@ -531,6 +531,7 @@ export const alertTypes: AlertMeta[] = [
   },
 ];
 export interface ScenarioStore {
+  insiderData: any;
   submitScenarioWithDefaults: (
     scenarioId: string,
     categoryName?: string,
@@ -876,9 +877,9 @@ export const ScenarioStore = create<ScenarioStore>()(
         onEdgesChange: (changes) =>
           set((state) => ({ edges: applyEdgeChanges(changes, state.edges) })),
         setGraphNodesData: (data) => {
-          console.log("setting this data: ", data);
-          console.log("nodes: ", data.nodes);
-          console.log("edges: ", data.edges);
+          //console.log("setting this data: ", data);
+          //console.log("nodes: ", data.nodes);
+          //console.log("edges: ", data.edges);
           const { nodes, edges } = getLayoutedElements(data.nodes, data.edges);
           get().setNodes(nodes);
           get().setEdges(edges);

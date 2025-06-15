@@ -81,6 +81,22 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --apcolor1: hsl(211, 100%, 22%);
+    --apcolor2: #005fad;
+    --apcolor3: #0051a8;
+    --apyelloww: hsl(54, 100%, 50%);
+    --apred: hsl(0, 83%, 50%);
+    --apyellow: hsl(45, 100%, 44%);
+    --apgray: hsl(120, 1%, 71%);
+    --apblue: hsl(221, 83%, 53%);       /* Blue-600 (#2563eb) /
+  --apbluetext: hsl(215, 65%, 45%);   / Blue-700 (#1d4ed8) /
+  --apbluebg: hsl(214, 94%, 93%);     / Blue-50 (#eff6ff) /
+  --apblueborder: hsl(214, 94%, 85%); / Blue-200 (#bfdbfe) /
+
+          / Red-600 (#dc2626) /
+  --apredtext: hsl(0, 72%, 45%);      / Red-700 (#b91c1c) /
+  --apredbg: hsl(0, 93%, 95%);        / Red-50 (#fef2f2) /
+  --apredborder: hsl(0, 93%, 85%);    / Red-200 (#fecaca) */
 }
 
 .dark {
@@ -129,7 +145,7 @@
 
 /* Custom styles for the sidebar */
 [data-sidebar="sidebar"] {
-  background: #f8fbff;
+  background: #ffffff;
 }
 
 [data-sidebar="menu-button"]:hover {

@@ -12,104 +12,26 @@ import { Progress } from "@/components/ui/progress"
 import { useState } from "react"
 import { Input } from "./ui/input"
 
-const rows = [
-    {
-        id: "CASE-3",
-        risk: 100,
-        alerts: "Attention! Your performance...",
-        assignee: { name: "Precious Owuda", image: "/avatars/1.png" },
-        status: "Analyze",
-        created: "3 days ago",
-    },
-    {
-        id: "CASE-6",
-        risk: 97,
-        alerts: "Great job! You’ve completed...",
-        assignee: { name: "Amira Johnson", image: "/avatars/2.png" },
-        status: "Analyze",
-        created: "2 days ago",
-    },
-    {
-        id: "CASE-6",
-        risk: 97,
-        alerts: "Great job! You’ve completed...",
-        assignee: { name: "Amira Johnson", image: "/avatars/2.png" },
-        status: "Analyze",
-        created: "2 days ago",
-    },
-    {
-        id: "CASE-6",
-        risk: 97,
-        alerts: "Great job! You’ve completed...",
-        assignee: { name: "Amira Johnson", image: "/avatars/2.png" },
-        status: "Analyze",
-        created: "2 days ago",
-    },
-    {
-        id: "CASE-6",
-        risk: 97,
-        alerts: "Great job! You’ve completed...",
-        assignee: { name: "Amira Johnson", image: "/avatars/2.png" },
-        status: "Analyze",
-        created: "2 days ago",
-    },
-    {
-        id: "CASE-6",
-        risk: 97,
-        alerts: "Great job! You’ve completed...",
-        assignee: { name: "Amira Johnson", image: "/avatars/2.png" },
-        status: "Analyze",
-        created: "2 days ago",
-    },
-    {
-        id: "CASE-6",
-        risk: 97,
-        alerts: "Great job! You’ve completed...",
-        assignee: { name: "Amira Johnson", image: "/avatars/2.png" },
-        status: "Analyze",
-        created: "2 days ago",
-    },
-    {
-        id: "CASE-6",
-        risk: 97,
-        alerts: "Great job! You’ve completed...",
-        assignee: { name: "Amira Johnson", image: "/avatars/2.png" },
-        status: "Analyze",
-        created: "2 days ago",
-    },
-    {
-        id: "CASE-6",
-        risk: 97,
-        alerts: "Great job! You’ve completed...",
-        assignee: { name: "Amira Johnson", image: "/avatars/2.png" },
-        status: "Analyze",
-        created: "2 days ago",
-    },
-    {
-        id: "CASE-6",
-        risk: 97,
-        alerts: "Great job! You’ve completed...",
-        assignee: { name: "Amira Johnson", image: "/avatars/2.png" },
-        status: "Analyze",
-        created: "2 days ago",
-    },
-    // Add more cases as needed...
-]
-const ITEMS_PER_PAGE = 8
 
-export function AnomalyTable() {
+const ITEMS_PER_PAGE = 14
+
+export function AnomalyTable({ data }: { data: any[] }) {
     const [page, setPage] = useState(1)
     const [accountFilter, setAccountFilter] = useState("")
     const [riskFilter, setRiskFilter] = useState("")
 
     // Apply filters
-    const filteredRows = rows.filter((row) => {
+    const filteredRows = data.filter((row) => {
         const matchesAccount =
-            accountFilter === "" || row.id.toLowerCase().includes(accountFilter.toLowerCase())
+            accountFilter === "" ||
+            row.account_number?.toString().toLowerCase().includes(accountFilter.toLowerCase());
         const matchesRisk =
-            riskFilter === "" || row.risk.toString().includes(riskFilter)
-        return matchesAccount && matchesRisk
-    })
+            riskFilter === "" ||
+            row.risk_score?.toString().includes(riskFilter);
+
+        return matchesAccount && matchesRisk;
+    });
+
 
     const totalPages = Math.ceil(filteredRows.length / ITEMS_PER_PAGE)
     const paginatedRows = filteredRows.slice(
@@ -130,16 +52,16 @@ export function AnomalyTable() {
                         setAccountFilter(e.target.value)
                         setPage(1)
                     }}
-                    className="sm:w-1/2"
+                    className="sm:w-1/10"
                 />
                 <Input
-                    placeholder="Filter by Risk (e.g. 97)"
+                    placeholder="Filter by Risk "
                     value={riskFilter}
                     onChange={(e) => {
                         setRiskFilter(e.target.value)
                         setPage(1)
                     }}
-                    className="sm:w-1/2"
+                    className="sm:w-1/10"
                     type="number"
                 />
             </div>
@@ -155,40 +77,36 @@ export function AnomalyTable() {
                     </TableRow>
                 </TableHeader>
                 <TableBody>
-                    {paginatedRows.map((row, i) => (
-                        <TableRow key={i}>
-                            <TableCell className="font-medium">{row.id}</TableCell>
-                            <TableCell>
-                                <div className="flex items-center gap-2">
-                                    <Progress value={row.risk} className="w-24 h-2" />
-                                    <span className="text-xs">{row.risk}/100</span>
-                                </div>
-                            </TableCell>
-                            <TableCell>
-                                <div className="flex flex-col">
-                                    <span className="text-sm line-clamp-1">{row.alerts}</span>
-                                    <span className="text-xs text-gray-500">6 more</span>
-                                </div>
-                            </TableCell>
-                            <TableCell>
-                                <div className="flex items-center gap-2">
-                                    <Avatar className="h-6 w-6">
-                                        <AvatarImage src={row.assignee.image} />
-                                        <AvatarFallback>{row.assignee.name[0]}</AvatarFallback>
-                                    </Avatar>
-                                    <span className="text-sm">{row.assignee.name}</span>
-                                </div>
-                            </TableCell>
-                            <TableCell>
-                                <Badge variant="outline" className="text-xs">
-                                    {row.status}
-                                </Badge>
-                            </TableCell>
-                            <TableCell className="text-sm text-gray-500">
-                                {row.created}
-                            </TableCell>
-                        </TableRow>
-                    ))}
+                    {paginatedRows.map((row, i) => {
+                        const date = new Date(row.operation_date);
+                        const formattedDate = date.toISOString().split("T")[0];
+                        const formattedTime = date.toTimeString().split(" ")[0];
+
+                        return (
+                            <TableRow key={i}>
+                                <TableCell>{row.account_number}</TableCell>
+                                <TableCell>{formattedDate}</TableCell>
+                                <TableCell>{formattedTime}</TableCell>
+                                <TableCell>{row.amount?.toFixed(2)} DZD</TableCell>
+                                <TableCell>
+                                    <div className="flex items-center gap-2">
+                                        <Progress value={row.risk_score} className="w-24 h-2" />
+                                        <span className="text-xs">{row.risk_score}/100</span>
+                                    </div>
+                                </TableCell>
+                                <TableCell>
+                                    <Badge variant="outline" className="text-xs">
+                                        {row.risk_label}
+                                    </Badge>
+                                </TableCell>
+                            </TableRow>
+                        );
+                    })}
+                    {data.length === 0 && (
+                        <p className="text-center text-sm text-gray-500 mb-4">
+                            Aucune anomalie à afficher.
+                        </p>
+                    )}
                 </TableBody>
             </Table>
             <div className="flex justify-between items-center mt-4 text-sm">

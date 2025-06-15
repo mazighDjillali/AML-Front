@@ -68,7 +68,7 @@ export   function LongLineChart() {
   }, [data]);
 
   return (
-    <Card className="bg-gradient-to-br from-blue-200 to-white shadow-md border border-yellow-300">
+    <Card className=" shadow-md border border-yellow-300">
       <CardHeader className="flex flex-col items-stretch space-y-0 sm:flex-row">
         <div className="flex flex-1 flex-col justify-center gap-1 px-2 py-5 sm:py-1 w-fit">
           <CardTitle className="text-base sm:text-sm">

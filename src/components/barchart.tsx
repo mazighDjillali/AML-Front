@@ -70,7 +70,7 @@ export function FraudByRiskChart() {
   }, []);
 
   return (
-    <Card className="h-[405px] overflow-hidden bg-gradient-to-br from-blue-200 to-white shadow-md border border-yellow-300">
+    <Card className="h-[405px] overflow-hidden  shadow-md border border-yellow-300">
       <CardHeader>
         <div className="flex items-start justify-between">
           <div>

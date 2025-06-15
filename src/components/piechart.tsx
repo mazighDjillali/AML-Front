@@ -128,7 +128,7 @@ export function FraudPieChart() {
   return (
     <Card
       data-chart={id}
-      className="bg-gradient-to-br from-blue-200 to-white shadow-md border border-yellow-300"
+      className=" shadow-md border border-yellow-300"
     >
       <ChartStyle id={id} config={chartConfig} />
 

@@ -25,7 +25,7 @@ export default function AlgeriaMap() {
         const response = await fetch("/dz.geojson");
         const data = await response.json();
         setGeoData(data);
-        console.log("Loaded geojson data. ");
+        //console.log("Loaded geojson data. ");
       } catch (error) {
         console.error("Failed to load GeoJSON:", error);
       }
@@ -183,7 +183,7 @@ export default function AlgeriaMap() {
 
   return (
     <div className="grid grid-cols-5 grid-rows-6 gap-1 h-full w-full relative">
-      <div className="col-span-2 row-span-6 bg-gradient-to-br from-blue-200 to-white shadow-md border border-yellow-300 rounded-2xl px-6 py-6">
+      <div className="col-span-2 row-span-6  shadow-md border border-yellow-300 rounded-2xl px-6 py-6">
         <h2 className="text-2xl font-bold text-yellow-500 mb-4 border-b pb-2">
           🗺️ Wilaya Info
         </h2>
@@ -233,7 +233,7 @@ export default function AlgeriaMap() {
         )}
       </div>
 
-      <div className="col-span-3 row-span-6 col-start-3 shadow-md rounded-2xl bg-gradient-to-br from-blue-200 to-white border border-yellow-300">
+      <div className="col-span-3 row-span-6 col-start-3 shadow-md rounded-2xl  border border-yellow-300">
         <div
           style={{
             position: "absolute",
